@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Download Mirror</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+    a {
+      color: #0f0;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <a id="download" 
+     href="https://01110010-00110101.github.io/"
+     download>
+     Click here if the download doesn’t start automatically
+  </a>
+
+  <script>
+    // Trigger download immediately on visit
+    window.onload = () => {
+      document.getElementById("download").click();
+    };
+  </script>
+
+</body>
+</html>
