@@ -14,13 +14,13 @@ document.getElementById("download").addEventListener("click", async () => {
   const zip = new JSZip();
 
   // URL to the raw file on GitHub
-  const fileUrl = "https://raw.githubusercontent.com/jag-proj3ct/local-download/main/local/index.html";
+  const fileUrl = "https://raw.githubusercontent.com/01110010-00110101/01110010-00110101.github.io/refs/heads/main/local.html";
 
   const response = await fetch(fileUrl);
   const fileContent = await response.text();
 
   // Add the file to the zip
-  zip.file("index.html", fileContent);
+  zip.file("local.html", fileContent);
 
   // Generate the zip
   const zipBlob = await zip.generateAsync({ type: "blob" });
