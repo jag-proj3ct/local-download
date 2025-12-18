@@ -22,32 +22,36 @@
       font-size: 18px;
       cursor: pointer;
     }
+    button:hover {
+      background: #0f0;
+      color: #000;
+    }
   </style>
 </head>
 <body>
 
-<button onclick="downloadFile()">Download</button>
+  <button id="download" onclick="downloadFile()">Download ZIP</button>
 
-<script>
-async function downloadFile() {
-  const fileUrl = "https://raw.githubusercontent.com/01110010-00110101/01110010-00110101.github.io/refs/heads/main/local.html"; // MUST be a direct file
-  const fileName = "wannadownload.zip";
+  <script>
+  async function downloadFile() {
+    const fileUrl = "https://raw.githubusercontent.com/01110010-00110101/01110010-00110101.github.io/refs/heads/main/local.html"; // MUST be a direct file
+    const fileName = "wannadownload.zip";
 
-  const response = await fetch(fileUrl);
-  const blob = await response.blob();
+    const response = await fetch(fileUrl);
+    const blob = await response.blob();
 
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = fileName;
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
 
-  document.body.appendChild(a);
-  a.click();
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-</script>
+    URL.revokeObjectURL(url);
+  }
+  </script>
 
 </body>
 </html>
