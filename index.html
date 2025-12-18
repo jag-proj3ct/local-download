@@ -14,26 +14,40 @@
       height: 100vh;
       font-family: sans-serif;
     }
-    a {
+    button {
+      background: none;
+      border: 1px solid #0f0;
       color: #0f0;
+      padding: 10px 16px;
       font-size: 18px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <a id="download" 
-     href="https://01110010-00110101.github.io/"
-     download>
-     Click here if the download doesn’t start automatically
-  </a>
+<button onclick="downloadFile()">Download</button>
 
-  <script>
-    // Trigger download immediately on visit
-    window.onload = () => {
-      document.getElementById("download").click();
-    };
-  </script>
+<script>
+async function downloadFile() {
+  const fileUrl = "https://example.com/file.zip"; // MUST be a direct file
+  const fileName = "file.zip";
+
+  const response = await fetch(fileUrl);
+  const blob = await response.blob();
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+
+  document.body.appendChild(a);
+  a.click();
+
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
 
 </body>
 </html>
